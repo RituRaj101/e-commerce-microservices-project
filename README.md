@@ -195,7 +195,7 @@ For each service:
 
 ## Testing with Postman
 
-Import `ecommerce-microservices.postman_collection.json` into Postman. It contains pre-built requests with `pm.test()` assertions for all three services, including:
+Import [`ecommerce-microservices_postman_collection.json`](./ecommerce-microservices_postman_collection.json) into Postman. It contains pre-built requests with `pm.test()` assertions for all three services, including:
 - Duplicate registration / wrong password rejection
 - Cache hit vs. cache miss timing comparison for product lookups
 - Cache freshness check after an update
@@ -245,7 +245,7 @@ ecommerce-backend/
 ├── order-service/
 │   └── src/main/java/com/ecommerce/order/service/
 │       ├── entity/ | dto/ | repository/ | service/ | controller/ | exception/ | client/
-└── ecommerce-microservices.postman_collection.json
+└── ecommerce-microservices_postman_collection.json
 ```
 
 Each service follows the same layered structure:
