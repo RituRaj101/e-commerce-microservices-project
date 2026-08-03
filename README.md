@@ -14,8 +14,7 @@ A microservices-based e-commerce backend built with Spring Boot and Spring Cloud
 - [Running the Project](#running-the-project)
 - [API Reference](#api-reference)
 - [Testing with Postman](#testing-with-postman)
-- [Design Decisions](#design-decisions--interview-notes)
-- [Known Limitations & Future Scope](#known-limitations--future-scope)
+- [Design Decisions](#design-decisions)
 - [Project Structure](#project-structure)
 
 ---
