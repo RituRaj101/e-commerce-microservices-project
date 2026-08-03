@@ -2,8 +2,7 @@
 
 A microservices-based e-commerce backend built with Spring Boot and Spring Cloud, demonstrating service discovery, inter-service communication, and distributed caching.
 
-> **Status:** Core flow complete (registration/login, product catalog with caching, order placement with live stock/price validation). API Gateway and Spring Security/JWT are intentionally out of scope for this phase — see [Known Limitations](#known-limitations--future-scope) below.
-
+> **Status:** Core flow complete (registration/login, product catalog with caching, order placement with live stock/price validation). API Gateway and Spring Security/JWT are intentionally out of scope for this phase
 ---
 
 ## Table of Contents
