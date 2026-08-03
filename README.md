@@ -205,7 +205,7 @@ Run requests top-to-bottom within each folder — later requests reuse ids captu
 
 ---
 
-## Design Decisions & Interview Notes
+## Design Decisions
 
 A few deliberate choices worth being able to explain out loud:
 
@@ -217,17 +217,6 @@ A few deliberate choices worth being able to explain out loud:
 - **Cache-aside pattern** (not write-through) for Redis in Product Service — reads populate the cache lazily; writes evict/refresh rather than trying to keep cache and DB in perfect lockstep on every write.
 
 ---
-
-## Known Limitations & Future Scope
-
-Being upfront about these is a stronger interview answer than pretending they don't exist:
-
-- **Stock is checked but not decremented** — placing an order validates sufficient stock exists but doesn't reduce it in Product Service. Two simultaneous orders for the same last unit could both currently succeed. Planned fix: an atomic conditional-update endpoint (`UPDATE products SET stock = stock - :qty WHERE id = :id AND stock >= :qty`) called from Order Service after validation.
-- **No API Gateway** — clients call each service directly on its own port instead of through a single entry point. Spring Cloud Gateway would add centralized routing (and a natural place to add rate limiting).
-- **No authentication/authorization** — Spring Security + JWT excluded from this phase; currently `userId` is passed directly in request bodies rather than derived from a validated token, and there's no role-based access control (e.g. only admins should be able to create/delete products).
-- **No automated tests** — `spring-boot-starter-test` is included in each service but currently unused; unit tests for the service layer (with Mockito) are a planned addition.
-- **No circuit breaker** on the Order → Product Feign call — if Product Service is slow/down, requests currently just time out (per the configured `connect-timeout`/`read-timeout`) rather than failing fast via something like Resilience4j.
-
 ---
 
 ## Project Structure
